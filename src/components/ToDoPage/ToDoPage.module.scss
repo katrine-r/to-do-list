@@ -1,0 +1,26 @@
+.ToDoPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  .ToDoWrapper {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .FormWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background: #25273C;
+  
+    .IconWrapper {
+      margin-right: 20px;
+    }
+  }
