@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    padding: 15px 20px;
+    padding: 10px 20px;
     width: 100%;
     border-radius: 3px;
     box-sizing: border-box;
@@ -23,4 +23,8 @@
     .IconWrapper {
       margin-right: 20px;
     }
+  }
+
+  .EmptyToDo {
+    color: #fff;
   }

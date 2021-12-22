@@ -1,6 +1,7 @@
 .ToDoListItem {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     list-style: none;
     padding: 10px 20px;
     border-bottom: 1px solid #5B5D72;
@@ -12,11 +13,25 @@
   .ToDoListItem:last-child {
     border-bottom: none;
   }
+
+  .ItemWrapper {
+    display: flex;
+    align-items: center;
+  }
   
   .ItemIcon {
+    align-items: center;
     margin-right: 20px;
   }
   
   .ItemText {
+    // align-items: center;
+  }
 
+  .Button {
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border: 1px solid #5B5D72;
+    color: #9799AE;
+    background: #25273C;
   }

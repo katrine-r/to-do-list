@@ -2,16 +2,17 @@ import React from "react";
 import classes from "./ToDoList.module.scss";
 import ToDoListItem from "./ToDoListItem/ToDoListItem";
 
-const ToDoList = (props) => {
+const ToDoList = ({myToDo, removeHandler}) => {
   return (
     <div className={classes.ToDoList}>
       <ul>
-        {props.myToDo.map((textItem, index) => {
+        {myToDo.map((textItem, index) => {
           return (
             <ToDoListItem
               key={index}
               id={textItem.id}
-              text={textItem.textToDo}
+              textToDo={textItem.textToDo}
+              removeHandler={removeHandler}
             />
           );
         })}

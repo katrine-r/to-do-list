@@ -18,6 +18,10 @@ const ToDoPage = () => {
   console.log("textToDo ", textToDo);
   console.log("myToDo ", myToDo);
 
+  const removeHandler = (id) => {
+    setMyToDo(myToDo.filter((i) => i.id !== id));
+  };
+
   return (
     <div className={classes.ToDoPage}>
       <div className={classes.ToDoWrapper}>
@@ -33,8 +37,11 @@ const ToDoPage = () => {
             onChange={(ev) => setTextToDo(ev.target.value)}
           />
         </form>
-        
-        <ToDoList myToDo={myToDo} />
+
+        { myToDo.length 
+          ? <ToDoList myToDo={myToDo} removeHandler={removeHandler} />
+          : <span className={classes.EmptyToDo}>To-do list is empty</span>
+        }
       </div>
     </div>
   );
