@@ -4,23 +4,27 @@ import { SVGiconsSelector } from "../../../UI/SVGiconsSelector/SVGiconsSelector"
 import classNames from "classnames";
 
 const ToDoListItem = ({textToDo, id, removeHandler, checkToDoHandler, checked}) => {
+
   return (
     <li className={classes.ToDoListItem}>
       <div className={classes.ItemWrapper}>
-        {/* <span className={classes.ItemIcon}> */}
         <span 
           className={classNames(classes.ItemIcon, {[classes.Check]: checked})}
           onClick={() => checkToDoHandler(id)}
         >
-
-          <SVGiconsSelector id="checkboxBlankCircle" />
+          {checked 
+            ? <SVGiconsSelector id="checkBold" className={classes.CheckBoldIcon} /> 
+            : <SVGiconsSelector id="checkboxBlankCircle" />
+          }
         </span>
-        <span className={classNames(classes.ItemText, {[classes.CheckText]: checked})}>{textToDo}</span>
+        <span className={classNames(classes.ItemText, {[classes.CheckText]: checked})}>
+          {textToDo}
+        </span>
       </div>
 
       <div>
         <button className={classes.Button} onClick={() => removeHandler(id)}>
-          Remove
+          <SVGiconsSelector id="delete" />
         </button>
       </div>
     </li>

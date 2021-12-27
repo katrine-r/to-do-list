@@ -21,7 +21,9 @@
   
   .ItemIcon {
     align-items: center;
+    height: 24px;
     margin-right: 20px;
+    cursor: pointer;
   }
   
   .ItemText {
@@ -29,17 +31,21 @@
   }
 
   .Button {
-    padding: 5px 10px;
-    text-transform: uppercase;
-    border: 1px solid #5B5D72;
-    color: #9799AE;
+    border: none;
     background: #25273C;
+    cursor: pointer;
   }
 
   .Check {
-    background: red;
+    width: 20px;
+    height: 20px;
+    margin: 2px 20px 2px 4px;
+    background: linear-gradient(45deg, #2D18A1 0%, #781C73 100%);
     border-radius: 50%;
+  }
 
+  .CheckBoldIcon {
+    margin: 0;
   }
 
   .CheckText {

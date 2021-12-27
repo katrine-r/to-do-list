@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import classes from "./ToDoPage.module.scss";
 import Input from "../UI/Input/Input";
 import ToDoList from "./ToDoList/ToDoList";
@@ -8,7 +8,7 @@ const ToDoPage = () => {
   const [myToDo, setMyToDo] = useState([]);
   const [textToDo, setTextToDo] = useState("");
   const [searchToDo, setSearchToDo] = useState("");
-  const [checkToDo, setCheckToDo] = useState(false)
+  const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -16,9 +16,6 @@ const ToDoPage = () => {
     setMyToDo([...myToDo, objToDo]);
     setTextToDo("");
   };
-
-  console.log("textToDo ", textToDo);
-  console.log("myToDo ", myToDo);
 
   const removeHandler = (id) => {
     setMyToDo(myToDo.filter((i) => i.id !== id));
@@ -29,36 +26,49 @@ const ToDoPage = () => {
       console.log('i', i)
       console.log('id', id)
       if (i.id === id) {
-        return {...i, checked: !i.checked}
+        return {...i, checked: !i.checked}     
       } else {
         return i
       }
-      // return i.id === id ? {...i, checked: !i.checked} : i
-  })
-  setMyToDo(checkMyToDo)
-}
+    })
+    setMyToDo(checkMyToDo)
+  }
 
-  const filterToDo = useMemo(() => {
-    
-      if (searchToDo) {
-       return  myToDo.filter(i => i.textToDo.includes(searchToDo))
-      } else {
-        return myToDo
-      }
-      }, [searchToDo, myToDo])
+  const filterToDo = useMemo(() => { 
+    if (searchToDo) {
+      return filteredMyToDo.filter(i => i.textToDo.includes(searchToDo))
+    } else {
+      return filteredMyToDo
+    }
+  }, [searchToDo, filteredMyToDo])
 
-  console.log('filterToDo', filterToDo)
+  
+
+  const filteredActiveCompleted = (checked) => {
+    if (checked === 'all') {
+      setFilteredMyToDo(myToDo)
+    } else {
+      const filtered = [...myToDo].filter(i => i.checked === checked)
+      setFilteredMyToDo(filtered)
+    }
+  }
+
+  useEffect(() => {
+    console.log('use effect')
+    setFilteredMyToDo(myToDo)
+    // return () => {}
+  }, [myToDo])
 
   return (
     <div className={classes.ToDoPage}>
       <div className={classes.ToDoWrapper}>
 
-      <Input
-        type="text"
-        value={searchToDo}
-        placeholder="search"
-        onChange={(ev) => setSearchToDo(ev.target.value)}
-      />
+        <Input
+          type="text"
+          value={searchToDo}
+          placeholder="search"
+          onChange={(ev) => setSearchToDo(ev.target.value)}
+        />
 
         <form onSubmit={handleSubmit} className={classes.FormWrapper}>
           <span className={classes.IconWrapper}>
@@ -75,10 +85,11 @@ const ToDoPage = () => {
 
         { myToDo.length 
           ? <ToDoList 
-            myToDo={filterToDo} 
-            removeHandler={removeHandler} 
-            checkToDoHandler={checkToDoHandler} 
-          />
+              filteredMyToDo={filterToDo} 
+              removeHandler={removeHandler} 
+              checkToDoHandler={checkToDoHandler} 
+              filteredActiveCompleted={filteredActiveCompleted} 
+            />
           : <span className={classes.EmptyToDo}>To-do list is empty</span>
         }
       </div>

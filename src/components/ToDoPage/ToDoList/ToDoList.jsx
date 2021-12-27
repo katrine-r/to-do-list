@@ -2,11 +2,17 @@ import React from "react";
 import classes from "./ToDoList.module.scss";
 import ToDoListItem from "./ToDoListItem/ToDoListItem";
 
-const ToDoList = ({myToDo, removeHandler, checkToDoHandler, checked}) => {
+const ToDoList = ({
+  removeHandler, 
+  checkToDoHandler, 
+  filteredMyToDo,
+  filteredActiveCompleted
+}) => {
+  
   return (
     <div className={classes.ToDoList}>
       <ul>
-        {myToDo.map((textItem, index) => {
+        {filteredMyToDo.map((textItem, index) => {
           return (
             <ToDoListItem
               key={index}
@@ -18,6 +24,20 @@ const ToDoList = ({myToDo, removeHandler, checkToDoHandler, checked}) => {
             />
           );
         })}
+
+        <li className={classes.ListItemButtonWrapper}>
+          <div>
+            <button className={classes.Button} onClick={() => filteredActiveCompleted('all')}>
+              All
+            </button>
+            <button className={classes.Button} onClick={() => filteredActiveCompleted(false)}>
+              Active
+            </button>
+            <button className={classes.Button} onClick={() => filteredActiveCompleted(true)}>
+              Completed
+            </button>
+          </div>
+        </li>
       </ul>
     </div>
   );
