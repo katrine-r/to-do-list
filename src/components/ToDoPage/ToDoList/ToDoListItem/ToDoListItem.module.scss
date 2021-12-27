@@ -25,6 +25,10 @@
     margin-right: 20px;
     cursor: pointer;
   }
+
+  .ItemIcon:hover {
+    opacity: 0.5;
+  }
   
   .ItemText {
     // align-items: center;
@@ -34,6 +38,10 @@
     border: none;
     background: #25273C;
     cursor: pointer;
+  }
+
+  .Button:hover { 
+    opacity: 0.5;
   }
 
   .Check {
@@ -49,5 +57,6 @@
   }
 
   .CheckText {
+    color: #3F4156;
     text-decoration: line-through;
   }

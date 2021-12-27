@@ -5,7 +5,13 @@ import ToDoList from "./ToDoList/ToDoList";
 import { SVGiconsSelector } from "../UI/SVGiconsSelector/SVGiconsSelector";
 
 const ToDoPage = () => {
-  const [myToDo, setMyToDo] = useState([]);
+  const [myToDo, setMyToDo] = useState(
+    () => {
+        const saved = localStorage.getItem("myToDo");
+        const initialValue = JSON.parse(saved);
+        return initialValue || [];
+      }
+    );
   const [textToDo, setTextToDo] = useState("");
   const [searchToDo, setSearchToDo] = useState("");
   const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
@@ -42,8 +48,6 @@ const ToDoPage = () => {
     }
   }, [searchToDo, filteredMyToDo])
 
-  
-
   const filteredActiveCompleted = (checked) => {
     if (checked === 'all') {
       setFilteredMyToDo(myToDo)
@@ -54,31 +58,36 @@ const ToDoPage = () => {
   }
 
   useEffect(() => {
-    console.log('use effect')
     setFilteredMyToDo(myToDo)
-    // return () => {}
+    window.localStorage.setItem("myToDo", JSON.stringify(myToDo));
   }, [myToDo])
 
   return (
     <div className={classes.ToDoPage}>
       <div className={classes.ToDoWrapper}>
 
-        <Input
-          type="text"
-          value={searchToDo}
-          placeholder="search"
-          onChange={(ev) => setSearchToDo(ev.target.value)}
-        />
+        <div className={classes.SearchWrapper}>
+          <span className={classes.IconWrapper}>
+            <SVGiconsSelector id="search" />
+          </span>
+
+          <Input
+            type="text"
+            value={searchToDo}
+            placeholder="Search"
+            onChange={(ev) => setSearchToDo(ev.target.value)}
+          />
+        </div>
 
         <form onSubmit={handleSubmit} className={classes.FormWrapper}>
           <span className={classes.IconWrapper}>
-            <SVGiconsSelector id="checkboxBlankCircle" />
+            <SVGiconsSelector id="keyboard" />
           </span>
           
           <Input
             type="text"
             value={textToDo}
-            placeholder="enter value"
+            placeholder="Enter value"
             onChange={(ev) => setTextToDo(ev.target.value)}
           />
         </form>

@@ -24,7 +24,7 @@ const ToDoListItem = ({textToDo, id, removeHandler, checkToDoHandler, checked}) 
 
       <div>
         <button className={classes.Button} onClick={() => removeHandler(id)}>
-          <SVGiconsSelector id="delete" />
+          <SVGiconsSelector id="delete" className={classes.ButtonDelete} />
         </button>
       </div>
     </li>
