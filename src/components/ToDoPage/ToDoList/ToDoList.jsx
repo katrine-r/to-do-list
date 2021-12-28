@@ -1,12 +1,14 @@
 import React from "react";
 import classes from "./ToDoList.module.scss";
 import ToDoListItem from "./ToDoListItem/ToDoListItem";
+import classNames from "classnames";
 
 const ToDoList = ({
   removeHandler, 
   checkToDoHandler, 
   filteredMyToDo,
-  filteredActiveCompleted
+  filteredActiveCompleted,
+  isActive
 }) => {
   
   return (
@@ -27,13 +29,13 @@ const ToDoList = ({
 
         <li className={classes.ListItemButtonWrapper}>
           <div>
-            <button className={classes.Button} onClick={() => filteredActiveCompleted('all')}>
+            <button className={classNames(classes.Button, {[classes.Active]: isActive === 'all'})} onClick={() => filteredActiveCompleted('all')}>
               All
             </button>
-            <button className={classes.Button} onClick={() => filteredActiveCompleted(false)}>
+            <button className={classNames(classes.Button, {[classes.Active]: isActive === false})} onClick={() => filteredActiveCompleted(false)}>
               Active
             </button>
-            <button className={classes.Button} onClick={() => filteredActiveCompleted(true)}>
+            <button className={classNames(classes.Button, {[classes.Active]: isActive === true})} onClick={() => filteredActiveCompleted(true)}>
               Completed
             </button>
           </div>

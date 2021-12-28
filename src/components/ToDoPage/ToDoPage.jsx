@@ -15,16 +15,19 @@ const ToDoPage = () => {
   const [textToDo, setTextToDo] = useState("");
   const [searchToDo, setSearchToDo] = useState("");
   const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
+  const [isActive, setIsActive] = useState('all')
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     const objToDo = { id: Date.now(), textToDo, checked: false};
     setMyToDo([...myToDo, objToDo]);
     setTextToDo("");
+    setIsActive('all')
   };
 
   const removeHandler = (id) => {
     setMyToDo(myToDo.filter((i) => i.id !== id));
+    setIsActive('all')
   };
 
   const checkToDoHandler = (id) => {
@@ -55,6 +58,7 @@ const ToDoPage = () => {
       const filtered = [...myToDo].filter(i => i.checked === checked)
       setFilteredMyToDo(filtered)
     }
+    setIsActive(checked)
   }
 
   useEffect(() => {
@@ -98,6 +102,7 @@ const ToDoPage = () => {
               removeHandler={removeHandler} 
               checkToDoHandler={checkToDoHandler} 
               filteredActiveCompleted={filteredActiveCompleted} 
+              isActive={isActive}
             />
           : <span className={classes.EmptyToDo}>To-do list is empty</span>
         }

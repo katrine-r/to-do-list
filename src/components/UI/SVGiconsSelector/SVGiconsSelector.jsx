@@ -19,17 +19,8 @@ export const SVGiconsSelector = (props) => {
       );
     case "checkBold":
       return (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10.3333 16.149L7 12.8156L8.4823 11.3333L10.3333 13.1896L15.5177 8L17 9.4823L10.3333 16.149Z"
-            fill="white"
-          />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.33333 14.149L5 10.8156L6.4823 9.33333L8.33333 11.1896L13.5177 6L15 7.4823L8.33333 14.149Z" fill="white"/>
         </svg>
       );
     case "delete":
