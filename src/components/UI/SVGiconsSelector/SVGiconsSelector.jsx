@@ -23,12 +23,6 @@ export const SVGiconsSelector = (props) => {
           <path d="M8.33333 14.149L5 10.8156L6.4823 9.33333L8.33333 11.1896L13.5177 6L15 7.4823L8.33333 14.149Z" fill="white"/>
         </svg>
       );
-    case "delete":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4ZM6 19C6 19.5304 6.21071 20.0391 6.58579 20.4142C6.96086 20.7893 7.46957 21 8 21H16C16.5304 21 17.0391 20.7893 17.4142 20.4142C17.7893 20.0391 18 19.5304 18 19V7H6V19Z" fill="#5B5D72"/>
-        </svg>
-      );
     case "search":
       return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,6 +46,36 @@ export const SVGiconsSelector = (props) => {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 12C1.9999 13.5702 2.36955 15.1183 3.07901 16.519C3.78847 17.9197 4.8178 19.1337 6.08367 20.0627C7.34955 20.9916 8.81638 21.6095 10.3654 21.8661C11.9145 22.1228 13.5022 22.011 15 21.54C12.9696 20.9019 11.1957 19.6327 9.93641 17.9169C8.67711 16.2011 7.99807 14.1283 7.99807 12C7.99807 9.87168 8.67711 7.79888 9.93641 6.0831C11.1957 4.36733 12.9696 3.09808 15 2.46C13.5022 1.98895 11.9145 1.87723 10.3654 2.13389C8.81638 2.39054 7.34955 3.00836 6.08367 3.93731C4.8178 4.86627 3.78847 6.08026 3.07901 7.48099C2.36955 8.88173 1.9999 10.4298 2 12V12Z" fill="white"/>
         </svg>
+      );
+    case "delete":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4ZM6 19C6 19.5304 6.21071 20.0391 6.58579 20.4142C6.96086 20.7893 7.46957 21 8 21H16C16.5304 21 17.0391 20.7893 17.4142 20.4142C17.7893 20.0391 18 19.5304 18 19V7H6V19Z" fill="#5B5D72"/>
+        </svg>
+      );
+    case "sortActive":
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 17H22L18 21L14 17H17V3H19V17ZM7 3C4.79 3 3 4.79 3 7C3 9.21 4.79 11 7 11C9.21 11 11 9.21 11 7C11 4.79 9.21 3 7 3ZM7 9C5.9 9 5 8.1 5 7C5 5.9 5.9 5 7 5C8.1 5 9 5.9 9 7C9 8.1 8.1 9 7 9ZM7 13C4.79 13 3 14.79 3 17C3 19.21 4.79 21 7 21C9.21 21 11 19.21 11 17C11 14.79 9.21 13 7 13Z" fill="#5B5D72"/>
+      </svg>
+    );
+    case "sortCompleted":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 7H22L18 3L14 7H17V21H19V7ZM5 7C5 8.1 5.9 9 7 9C8.1 9 9 8.1 9 7C9 5.9 8.1 5 7 5C5.9 5 5 5.9 5 7ZM7 3C9.21 3 11 4.79 11 7C11 9.21 9.21 11 7 11C4.79 11 3 9.21 3 7C3 4.79 4.79 3 7 3ZM7 13C4.79 13 3 14.79 3 17C3 19.21 4.79 21 7 21C9.21 21 11 19.21 11 17C11 14.79 9.21 13 7 13Z" fill="#5B5D72"/>
+        </svg>        
+      );
+    case "sortAlphabeticalAscending":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 17H22L18 21L14 17H17V3H19V17ZM11 13V15L7.67 19H11V21H5V19L8.33 15H5V13H11ZM9 3H7C5.9 3 5 3.9 5 5V11H7V9H9V11H11V5C11 4.46957 10.7893 3.96086 10.4142 3.58579C10.0391 3.21071 9.53043 3 9 3ZM9 7H7V5H9V7Z" fill="#5B5D72"/>
+        </svg>
+      );
+    case "sortAlphabeticalDescending":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 7H22L18 3L14 7H17V21H19V7ZM11 13V15L7.67 19H11V21H5V19L8.33 15H5V13H11ZM9 3H7C5.9 3 5 3.9 5 5V11H7V9H9V11H11V5C11 4.46957 10.7893 3.96086 10.4142 3.58579C10.0391 3.21071 9.53043 3 9 3ZM9 7H7V5H9V7Z" fill="#5B5D72"/>
+        </svg>         
       );
     default:
       return <svg></svg>;

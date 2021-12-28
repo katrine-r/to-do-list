@@ -15,19 +15,19 @@ const ToDoPage = () => {
   const [textToDo, setTextToDo] = useState("");
   const [searchToDo, setSearchToDo] = useState("");
   const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
-  const [isActive, setIsActive] = useState('all')
+  const [isActive, setIsActive] = useState("all")
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     const objToDo = { id: Date.now(), textToDo, checked: false};
     setMyToDo([...myToDo, objToDo]);
     setTextToDo("");
-    setIsActive('all')
+    setIsActive("all")
   };
 
   const removeHandler = (id) => {
     setMyToDo(myToDo.filter((i) => i.id !== id));
-    setIsActive('all')
+    setIsActive("all")
   };
 
   const checkToDoHandler = (id) => {
@@ -52,13 +52,43 @@ const ToDoPage = () => {
   }, [searchToDo, filteredMyToDo])
 
   const filteredActiveCompleted = (checked) => {
-    if (checked === 'all') {
+    if (checked === "all") {
       setFilteredMyToDo(myToDo)
     } else {
       const filtered = [...myToDo].filter(i => i.checked === checked)
       setFilteredMyToDo(filtered)
     }
     setIsActive(checked)
+  }
+
+  const sortedActiveCompleted = (checked) => {
+    console.log('checked ', checked)
+    if (checked) {
+      setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
+        return b.checked - a.checked
+      })
+      ])
+    } else {
+      setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
+        return a.checked - b.checked
+      })
+      ])
+    }
+  }
+
+  const sortedAlphabetical = (sorted) => {
+    console.log('sorted ', sorted)
+    if (sorted === "ascending") {
+      setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
+        return a.textToDo.localeCompare(b.textToDo)
+      })
+      ])
+    } else {
+      setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
+        return b.textToDo.localeCompare(a.textToDo)
+      })
+      ])
+    }
   }
 
   useEffect(() => {
@@ -103,6 +133,8 @@ const ToDoPage = () => {
               checkToDoHandler={checkToDoHandler} 
               filteredActiveCompleted={filteredActiveCompleted} 
               isActive={isActive}
+              sortedActiveCompleted={sortedActiveCompleted}
+              sortedAlphabetical={sortedAlphabetical}
             />
           : <span className={classes.EmptyToDo}>To-do list is empty</span>
         }
