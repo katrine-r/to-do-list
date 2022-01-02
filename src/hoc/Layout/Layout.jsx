@@ -1,18 +1,28 @@
 import React from "react";
 import classes from "./Layout.module.scss";
 import HeaderBackground from "../../components/UI/HeaderBackground/HeaderBackground";
+import HeaderTitle from '../../components/HeaderTitle/HeaderTitle'
+import classNames from "classnames";
 
-const Layout = (props) => {
+const Layout = ({changeTheme, onChangeThemeHandler, children}) => {
+
   return (
-    <div className={classes.Layout}>
+    <div className={classNames(classes.Layout, 
+      {[classes.LightTheme]: changeTheme === "light"})}
+    >
       <main>
         <div className={classes.Header}>
-          <HeaderBackground />
+          <HeaderBackground 
+            changeTheme={changeTheme}
+          />
           <div className={classes.HeaderWrapper}>
             <div className={classes.HeaderTitleWrapper}>
-              <h1>ToDo</h1>
+              <HeaderTitle 
+                changeTheme={changeTheme}
+                onChangeThemeHandler={onChangeThemeHandler} 
+              />
             </div>
-            {props.children}
+            {children}
           </div>
         </div>
       </main>

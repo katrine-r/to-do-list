@@ -1,0 +1,23 @@
+.HeaderTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+
+  .Title {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+  }
+}
+
+.Button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.Button:hover {
+  opacity: 0.5;
+}

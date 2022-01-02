@@ -1,62 +1,79 @@
 .ToDoListItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    padding: 10px 20px;
-    border-bottom: 1px solid #5B5D72;
-    box-sizing: border-box;
-    font-size: 14px;;
-    color: #9799AE;
-  }
-  
-  .ToDoListItem:last-child {
-    border-bottom: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 10px 20px;
+  border-bottom: 1px solid #5B5D72;
+  box-sizing: border-box;
+  font-size: 14px;;
+  color: #9799AE;
+}
 
-  .ItemWrapper {
-    display: flex;
-    align-items: center;
-  }
-  
-  .ItemIcon {
-    align-items: center;
-    height: 24px;
-    margin-right: 20px;
-    cursor: pointer;
-  }
+.ToDoListItem:last-child {
+  border-bottom: none;
+}
 
-  .ItemIcon:hover {
-    opacity: 0.5;
-  }
-  
-  .ItemText {
-    // align-items: center;
-  }
+.ItemWrapper {
+  display: flex;
+  align-items: center;
+}
 
-  .Button {
-    border: none;
-    background: #25273C;
-    cursor: pointer;
-  }
+.ItemIcon {
+  align-items: center;
+  height: 24px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 
-  .Button:hover { 
-    opacity: 0.5;
-  }
+.ItemIcon:hover {
+  opacity: 0.5;
+}
 
-  .Check {
-    width: 20px;
-    height: 20px;
-    margin: 2px 22px 2px 2px;
-    background: linear-gradient(45deg, #2D18A1 0%, #781C73 100%);
-    border-radius: 50%;
-  }
+.ItemText {
+  color: #9799AE;
+}
 
-  .CheckBoldIcon {
-    margin: 0;
-  }
+.Button {
+  border: none;
+  background: #25273C;
+  cursor: pointer;
+}
 
-  .CheckText {
-    color: #3F4156;
-    text-decoration: line-through;
-  }
+.Button:hover { 
+  opacity: 0.5;
+}
+
+.Check {
+  width: 20px;
+  height: 20px;
+  margin: 2px 22px 2px 2px;
+  background: linear-gradient(45deg, #2D18A1 0%, #781C73 100%);
+  border-radius: 50%;
+}
+
+.CheckBoldIcon {
+  margin: 0;
+}
+
+.CheckText {
+  color: #3F4156;
+  text-decoration: line-through;
+}
+
+.LightTheme {
+  color: #3F4156;
+}
+
+.CheckTextLightTheme {
+  color: #9799AE;
+  text-decoration: line-through;
+}
+
+.CheckLightTheme {
+  width: 20px;
+  height: 20px;
+  margin: 2px 22px 2px 2px;
+  background: linear-gradient(45deg, #B763EF 0%, #73A5FC 100%);
+  border-radius: 50%;
+}

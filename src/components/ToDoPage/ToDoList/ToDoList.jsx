@@ -3,6 +3,7 @@ import classes from "./ToDoList.module.scss";
 import ToDoListItem from "./ToDoListItem/ToDoListItem";
 import classNames from "classnames";
 import { SVGiconsSelector } from "../../UI/SVGiconsSelector/SVGiconsSelector";
+import Button from "../../UI/Button/Button";
 
 const ToDoList = ({
   removeHandler, 
@@ -11,11 +12,14 @@ const ToDoList = ({
   filteredActiveCompleted,
   isActive,
   sortedActiveCompleted,
-  sortedAlphabetical
+  sortedAlphabetical,
+  changeTheme
 }) => {
   
   return (
-    <div className={classes.ToDoList}>
+    <div className={classNames(classes.ToDoList, 
+      {[classes.LightTheme]: changeTheme === "light"})}
+    >
       <ul>
         {filteredMyToDo.map((textItem, index) => {
           return (
@@ -26,34 +30,47 @@ const ToDoList = ({
               removeHandler={removeHandler}
               checkToDoHandler={checkToDoHandler}
               checked={textItem.checked}
+              changeTheme={changeTheme}
             />
           );
         })}
 
         <li className={classes.ListItemButtonWrapper}>
-            <button className={classes.Button} onClick={() => sortedAlphabetical("ascending")}>
-              <SVGiconsSelector id="sortAlphabeticalAscending" />
-            </button>
-            <button className={classes.Button} onClick={() => sortedAlphabetical("descending")}>
-              <SVGiconsSelector id="sortAlphabeticalDescending" />
-            </button>
+          <Button onClick={() => sortedAlphabetical("ascending")}>
+            <SVGiconsSelector id="sortAlphabeticalAscending" />
+          </Button>
+          <Button onClick={() => sortedAlphabetical("descending")}>
+            <SVGiconsSelector id="sortAlphabeticalDescending" />
+          </Button>
 
-            <button className={classes.Button} onClick={() => sortedActiveCompleted(false)}>
-              <SVGiconsSelector id="sortActive" />
-            </button>
-            <button className={classes.Button} onClick={() => sortedActiveCompleted(true)}>
-              <SVGiconsSelector id="sortCompleted" />
-            </button>
+          <Button onClick={() => sortedActiveCompleted(false)}>
+            <SVGiconsSelector id="sortActive" />
+          </Button>
+          <Button onClick={() => sortedActiveCompleted(true)}>
+            <SVGiconsSelector id="sortCompleted" />
+          </Button>
 
-            <button className={classNames(classes.Button, {[classes.Active]: isActive === "all"})} onClick={() => filteredActiveCompleted("all")}>
-              All
-            </button>
-            <button className={classNames(classes.Button, {[classes.Active]: isActive === false})} onClick={() => filteredActiveCompleted(false)}>
-              Active
-            </button>
-            <button className={classNames(classes.Button, {[classes.Active]: isActive === true})} onClick={() => filteredActiveCompleted(true)}>
-              Completed
-            </button>
+          <Button className={classNames(classes.Button, 
+            {[classes.Active]: isActive === "all" && changeTheme === "dark"},
+            {[classes.ActiveLightTheme]: isActive === "all" && changeTheme === "light"})} 
+            onClick={() => filteredActiveCompleted("all")}
+          >
+            All
+          </Button>
+          <Button className={classNames(classes.Button, 
+            {[classes.Active]: isActive === false && changeTheme === "dark"},
+            {[classes.ActiveLightTheme]: isActive === false && changeTheme === "light"})} 
+            onClick={() => filteredActiveCompleted(false)}
+          >
+            Active
+          </Button>
+          <Button className={classNames(classes.Button, 
+            {[classes.Active]: isActive === true && changeTheme === "dark"},
+            {[classes.ActiveLightTheme]: isActive === true && changeTheme === "light"})} 
+            onClick={() => filteredActiveCompleted(true)}
+          >
+            Completed
+          </Button>
         </li>
       </ul>
     </div>

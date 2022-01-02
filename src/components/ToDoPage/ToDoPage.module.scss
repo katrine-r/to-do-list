@@ -1,31 +1,35 @@
 .ToDoPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-  }
-  
-  .ToDoWrapper {
-    width: 100%;
-    max-width: 600px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
 
-  .SearchWrapper,
-  .FormWrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    padding: 10px 20px;
-    width: 100%;
-    border-radius: 3px;
-    box-sizing: border-box;
-    background: #25273C;
-  
-    .IconWrapper {
-      margin-right: 20px;
-    }
-  }
+.ToDoWrapper {
+  width: 100%;
+  max-width: 600px;
+}
 
-  .EmptyToDo {
-    color: #fff;
+.SearchWrapper,
+.FormWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: #25273C;
+
+  .IconWrapper {
+    margin-right: 20px;
   }
+}
+
+.EmptyToDo {
+  color: #fff;
+}
+
+.LightTheme {
+  background: #fff;
+}

@@ -3,8 +3,9 @@ import classes from "./ToDoPage.module.scss";
 import Input from "../UI/Input/Input";
 import ToDoList from "./ToDoList/ToDoList";
 import { SVGiconsSelector } from "../UI/SVGiconsSelector/SVGiconsSelector";
+import classNames from "classnames";
 
-const ToDoPage = () => {
+const ToDoPage = ({changeTheme}) => {
   const [myToDo, setMyToDo] = useState(
     () => {
         const saved = localStorage.getItem("myToDo");
@@ -62,7 +63,6 @@ const ToDoPage = () => {
   }
 
   const sortedActiveCompleted = (checked) => {
-    console.log('checked ', checked)
     if (checked) {
       setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
         return b.checked - a.checked
@@ -77,7 +77,6 @@ const ToDoPage = () => {
   }
 
   const sortedAlphabetical = (sorted) => {
-    console.log('sorted ', sorted)
     if (sorted === "ascending") {
       setFilteredMyToDo([...filteredMyToDo.sort((a, b) => {
         return a.textToDo.localeCompare(b.textToDo)
@@ -100,7 +99,9 @@ const ToDoPage = () => {
     <div className={classes.ToDoPage}>
       <div className={classes.ToDoWrapper}>
 
-        <div className={classes.SearchWrapper}>
+        <div className={classNames(classes.SearchWrapper, 
+          {[classes.LightTheme]: changeTheme === "light"})}
+        >
           <span className={classes.IconWrapper}>
             <SVGiconsSelector id="search" />
           </span>
@@ -110,10 +111,13 @@ const ToDoPage = () => {
             value={searchToDo}
             placeholder="Search"
             onChange={(ev) => setSearchToDo(ev.target.value)}
+            changeTheme={changeTheme}
           />
         </div>
 
-        <form onSubmit={handleSubmit} className={classes.FormWrapper}>
+        <form onSubmit={handleSubmit} className={classNames(classes.FormWrapper, 
+          {[classes.LightTheme]: changeTheme === "light"})}
+        >
           <span className={classes.IconWrapper}>
             <SVGiconsSelector id="keyboard" />
           </span>
@@ -123,6 +127,7 @@ const ToDoPage = () => {
             value={textToDo}
             placeholder="Enter value"
             onChange={(ev) => setTextToDo(ev.target.value)}
+            changeTheme={changeTheme}
           />
         </form>
 
@@ -135,6 +140,7 @@ const ToDoPage = () => {
               isActive={isActive}
               sortedActiveCompleted={sortedActiveCompleted}
               sortedAlphabetical={sortedAlphabetical}
+              changeTheme={changeTheme}
             />
           : <span className={classes.EmptyToDo}>To-do list is empty</span>
         }
