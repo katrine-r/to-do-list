@@ -13,9 +13,9 @@ const ToDoList = ({
   isActive,
   sortedActiveCompleted,
   sortedAlphabetical,
-  changeTheme
+  changeTheme,
+  removeCompletedToDoHandler
 }) => {
-  
   return (
     <div className={classNames(classes.ToDoList, 
       {[classes.LightTheme]: changeTheme === "light"})}
@@ -70,6 +70,9 @@ const ToDoList = ({
             onClick={() => filteredActiveCompleted(true)}
           >
             Completed
+          </Button>
+          <Button onClick={() => removeCompletedToDoHandler()}>
+            <SVGiconsSelector id="deleteChecked" />
           </Button>
         </li>
       </ul>

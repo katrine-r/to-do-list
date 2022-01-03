@@ -90,6 +90,11 @@ const ToDoPage = ({changeTheme}) => {
     }
   }
 
+  const removeCompletedToDoHandler = () => {
+    setMyToDo(myToDo.filter((i) => i.checked === false))
+    setIsActive("all")
+  }
+
   useEffect(() => {
     setFilteredMyToDo(myToDo)
     window.localStorage.setItem("myToDo", JSON.stringify(myToDo));
@@ -141,6 +146,7 @@ const ToDoPage = ({changeTheme}) => {
               sortedActiveCompleted={sortedActiveCompleted}
               sortedAlphabetical={sortedAlphabetical}
               changeTheme={changeTheme}
+              removeCompletedToDoHandler={removeCompletedToDoHandler}
             />
           : <span className={classes.EmptyToDo}>To-do list is empty</span>
         }
