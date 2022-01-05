@@ -16,8 +16,8 @@ const HeaderTitle = ({changeTheme, onChangeThemeHandler}) => {
           onClick={() => onChangeThemeHandler(changeTheme)}
         >
           { changeTheme === "dark" 
-            ? <SVGiconsSelector id="sunny" />
-            : <SVGiconsSelector id="moon" />
+              ? <SVGiconsSelector id="sunny" />
+              : <SVGiconsSelector id="moon" />
           }
         </Button>
       </div>

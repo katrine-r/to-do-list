@@ -17,6 +17,19 @@
 .ItemWrapper {
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.ToDoWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 428px;
+  box-sizing: border-box;
+}
+
+.ButtonWrapper {
+  display: flex;
 }
 
 .ItemIcon {
@@ -31,6 +44,7 @@
 }
 
 .ItemText {
+  text-align: left;
   color: #9799AE;
 }
 
@@ -62,6 +76,7 @@
 }
 
 .LightTheme {
+  text-align: left;
   color: #3F4156;
 }
 

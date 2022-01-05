@@ -20,7 +20,7 @@ const ToDoPage = ({changeTheme}) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const objToDo = { id: Date.now(), textToDo, checked: false};
+    const objToDo = { id: Date.now(), textToDo, checked: false, edit: false };
     setMyToDo([...myToDo, objToDo]);
     setTextToDo("");
     setIsActive("all")
@@ -95,6 +95,42 @@ const ToDoPage = ({changeTheme}) => {
     setIsActive("all")
   }
 
+  const viewOrEditToDoHandler = (id) => {
+    const viewOrEditToDo = myToDo.map((i) => {
+      console.log('viewOrEditToDo i ', i)
+      if (i.id === id) {
+        return {...i, edit: !i.edit}
+      } else {
+        return i
+      }
+    })
+    setMyToDo(viewOrEditToDo)
+  }
+
+  const editingToDoHandler = (ev, id) => {
+    console.log('ev ', ev.target.value)
+    console.log('id ', id)
+    const editingToDo = myToDo.map((i) => {
+      if (i.id === id) {
+        return {...i, textToDo: ev.target.value}
+      } else {
+        return i
+      }
+    })
+    setMyToDo(editingToDo)
+  }
+
+  const finishedEditingKeyEnterHandler = (ev, id) => {
+    const finishedEditingKey = myToDo.map((i) => {
+      if (i.id === id && ev.key === "Enter") {
+        return {...i, edit: false}
+      } else {
+        return i
+      }
+    })
+    setMyToDo(finishedEditingKey)
+  }
+
   useEffect(() => {
     setFilteredMyToDo(myToDo)
     window.localStorage.setItem("myToDo", JSON.stringify(myToDo));
@@ -147,8 +183,16 @@ const ToDoPage = ({changeTheme}) => {
               sortedAlphabetical={sortedAlphabetical}
               changeTheme={changeTheme}
               removeCompletedToDoHandler={removeCompletedToDoHandler}
+              viewOrEditToDoHandler={viewOrEditToDoHandler}
+              setTextToDo={setTextToDo}
+              editingToDoHandler={editingToDoHandler}
+              finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
             />
-          : <span className={classes.EmptyToDo}>To-do list is empty</span>
+          : <span className={classNames(classes.EmptyToDo, 
+              {[classes.LightTheme]: changeTheme === "light"})}
+            >
+              To-do list is empty
+            </span>
         }
       </div>
     </div>

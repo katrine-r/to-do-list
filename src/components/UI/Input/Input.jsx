@@ -8,7 +8,7 @@ const Input = (props) => {
 
   return (
     <input className={classNames(classes.Input, 
-      {[classes.LightTheme]: changeTheme === 'light'})} {...restProps} 
+      {[classes.LightTheme]: changeTheme === "light"})} {...restProps} 
     />
   );
 };

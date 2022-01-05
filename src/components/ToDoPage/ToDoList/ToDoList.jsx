@@ -14,8 +14,13 @@ const ToDoList = ({
   sortedActiveCompleted,
   sortedAlphabetical,
   changeTheme,
-  removeCompletedToDoHandler
+  removeCompletedToDoHandler,
+  viewOrEditToDoHandler,
+  setTextToDo,
+  editingToDoHandler,
+  finishedEditingKeyEnterHandler
 }) => {
+
   return (
     <div className={classNames(classes.ToDoList, 
       {[classes.LightTheme]: changeTheme === "light"})}
@@ -31,6 +36,11 @@ const ToDoList = ({
               checkToDoHandler={checkToDoHandler}
               checked={textItem.checked}
               changeTheme={changeTheme}
+              viewOrEditToDoHandler={viewOrEditToDoHandler}
+              edit={textItem.edit}
+              setTextToDo={setTextToDo}
+              editingToDoHandler={editingToDoHandler}
+              finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
             />
           );
         })}
