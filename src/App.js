@@ -1,7 +1,9 @@
 import "./App.css";
 import Layout from "./hoc/Layout/Layout";
-import ToDoPage  from './components/ToDoPage/ToDoPage';
+import ToDoPage  from "./components/ToDoPage/ToDoPage";
 import { useState } from "react";
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
 
 function App() {
 
@@ -21,7 +23,9 @@ function App() {
         changeTheme={changeTheme}
         onChangeThemeHandler={onChangeThemeHandler}
       >
-        <ToDoPage changeTheme={changeTheme} />
+        <DndProvider backend={HTML5Backend}>
+          <ToDoPage changeTheme={changeTheme} />
+        </DndProvider>
       </Layout>
     </div>
   );

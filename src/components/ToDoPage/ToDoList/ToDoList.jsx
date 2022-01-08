@@ -18,7 +18,8 @@ const ToDoList = ({
   viewOrEditToDoHandler,
   setTextToDo,
   editingToDoHandler,
-  finishedEditingKeyEnterHandler
+  finishedEditingKeyEnterHandler,
+  moveCardToDo
 }) => {
 
   return (
@@ -30,6 +31,7 @@ const ToDoList = ({
           return (
             <ToDoListItem
               key={index}
+              index={index}
               id={textItem.id}
               textToDo={textItem.textToDo}
               removeHandler={removeHandler}
@@ -41,6 +43,7 @@ const ToDoList = ({
               setTextToDo={setTextToDo}
               editingToDoHandler={editingToDoHandler}
               finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
+              moveCardToDo={moveCardToDo}
             />
           );
         })}

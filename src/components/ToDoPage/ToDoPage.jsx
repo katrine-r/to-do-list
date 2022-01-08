@@ -1,9 +1,10 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import classes from "./ToDoPage.module.scss";
 import Input from "../UI/Input/Input";
 import ToDoList from "./ToDoList/ToDoList";
 import { SVGiconsSelector } from "../UI/SVGiconsSelector/SVGiconsSelector";
 import classNames from "classnames";
+import update from "immutability-helper";
 
 const ToDoPage = ({changeTheme}) => {
   const [myToDo, setMyToDo] = useState(
@@ -131,6 +132,16 @@ const ToDoPage = ({changeTheme}) => {
     setMyToDo(finishedEditingKey)
   }
 
+  const moveCardToDo = useCallback((dragIndex, hoverIndex) => {
+    const dragCardToDo = myToDo[dragIndex]
+    setMyToDo(update(myToDo, {
+      $splice: [
+        [dragIndex, 1],
+        [hoverIndex, 0, dragCardToDo],
+      ],
+    }))
+  }, [myToDo])
+
   useEffect(() => {
     setFilteredMyToDo(myToDo)
     window.localStorage.setItem("myToDo", JSON.stringify(myToDo));
@@ -187,6 +198,7 @@ const ToDoPage = ({changeTheme}) => {
               setTextToDo={setTextToDo}
               editingToDoHandler={editingToDoHandler}
               finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
+              moveCardToDo={moveCardToDo}
             />
           : <span className={classNames(classes.EmptyToDo, 
               {[classes.LightTheme]: changeTheme === "light"})}
