@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Layout.module.scss";
-import HeaderBackground from "../../components/UI/HeaderBackground/HeaderBackground";
+import HeaderBackground from "../../components/HeaderBackground/HeaderBackground"
 import HeaderTitle from '../../components/HeaderTitle/HeaderTitle'
 import classNames from "classnames";
+import { ChangeThemeContext } from "../../context";
 
-const Layout = ({changeTheme, onChangeThemeHandler, children}) => {
+const Layout = ({ onChangeThemeHandler, children }) => {
+
+  const {changeTheme} = useContext(ChangeThemeContext)
 
   return (
     <div className={classNames(classes.Layout, 
@@ -12,17 +15,12 @@ const Layout = ({changeTheme, onChangeThemeHandler, children}) => {
     >
       <main>
         <div className={classes.Header}>
-          <HeaderBackground 
-            changeTheme={changeTheme}
-          />
+          <HeaderBackground />
           <div className={classes.HeaderWrapper}>
             <div className={classes.HeaderTitleWrapper}>
-              <HeaderTitle 
-                changeTheme={changeTheme}
-                onChangeThemeHandler={onChangeThemeHandler} 
-              />
+              <HeaderTitle onChangeThemeHandler={onChangeThemeHandler} />
             </div>
-            {children}
+            { children }
           </div>
         </div>
       </main>

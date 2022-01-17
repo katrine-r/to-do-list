@@ -21,3 +21,17 @@
 .Button:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 767px) {
+  .HeaderTitle {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .HeaderTitle {
+    width: 100%;
+    max-width: 330px;
+  }
+}

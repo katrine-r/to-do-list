@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './HeaderTitle.module.scss'
 import { SVGiconsSelector } from '../UI/SVGiconsSelector/SVGiconsSelector'
 import Button from '../UI/Button/Button'
+import { ChangeThemeContext } from '../../context'
 
-const HeaderTitle = ({changeTheme, onChangeThemeHandler}) => {
+const HeaderTitle = ({ onChangeThemeHandler }) => {
+
+  const {changeTheme} = useContext(ChangeThemeContext)
+
   return (
     <div className={classes.HeaderTitle}>
       <div>

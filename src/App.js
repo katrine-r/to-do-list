@@ -4,6 +4,7 @@ import ToDoPage  from "./components/ToDoPage/ToDoPage";
 import { useState } from "react";
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
+import { ChangeThemeContext } from './context'
 
 function App() {
 
@@ -19,14 +20,13 @@ function App() {
 
   return (
     <div className="App">
-      <Layout 
-        changeTheme={changeTheme}
-        onChangeThemeHandler={onChangeThemeHandler}
-      >
-        <DndProvider backend={HTML5Backend}>
-          <ToDoPage changeTheme={changeTheme} />
-        </DndProvider>
-      </Layout>
+      <ChangeThemeContext.Provider value={{changeTheme}}>
+        <Layout onChangeThemeHandler={onChangeThemeHandler}>
+          <DndProvider backend={HTML5Backend}>
+            <ToDoPage />
+          </DndProvider>
+        </Layout>
+      </ChangeThemeContext.Provider>
     </div>
   );
 }

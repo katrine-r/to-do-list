@@ -9,3 +9,9 @@
 .Button:hover {
     opacity: 0.5;
 }
+
+@media screen and (max-width: 767px) {
+    .Button {
+        padding: 5px 5px;
+    }
+}

@@ -34,3 +34,17 @@
   color: #3F4156;
   background: #fff;
 }
+
+@media screen and (max-width: 767px) {
+  .ToDoWrapper {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .ToDoWrapper {
+    width: 100%;
+    max-width: 330px;
+  }
+}

@@ -1,14 +1,12 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import classes from "./ToDoListItem.module.scss";
 import { SVGiconsSelector } from "../../../UI/SVGiconsSelector/SVGiconsSelector";
 import classNames from "classnames";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import { useDrag, useDrop } from "react-dnd";
-import { ItemTypes } from "./ItemTypes";
-const style = {
-  cursor: "grab",
-};
+import { ItemTypes } from "../../../../ItemTypes";
+import { ChangeThemeContext } from "../../../../context";
 
 const ToDoListItem = ({
   textToDo, 
@@ -16,7 +14,6 @@ const ToDoListItem = ({
   removeHandler, 
   checkToDoHandler, 
   checked, 
-  changeTheme,
   viewOrEditToDoHandler,
   edit,
   editingToDoHandler,
@@ -24,6 +21,8 @@ const ToDoListItem = ({
   moveCardToDo,
   index
 }) => {
+
+  const {changeTheme} = useContext(ChangeThemeContext)
 
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
@@ -75,14 +74,12 @@ const ToDoListItem = ({
 
   const opacity = isDragging ? 0 : 1
 
-  const cursor = isDragging ? "grabbing" : "grab"
-
   drag(drop(ref))
 
   return (
-    <li className={classes.ToDoListItem} 
+    <li className={classes.ToDoListItem}
       ref={ref}
-      style={{ ...style, cursor,  opacity }}
+      style={{ opacity }}
       data-handler-id={handlerId}
     >
       <div className={classes.ItemWrapper}>
@@ -104,7 +101,6 @@ const ToDoListItem = ({
                 value={textToDo} 
                 onChange={(ev) => editingToDoHandler(ev, id)} 
                 onKeyPress={(ev) => finishedEditingKeyEnterHandler(ev, id)} 
-                changeTheme={changeTheme}
               />
             : <span className={classNames(
                 {[classes.CheckText]: checked && changeTheme === "dark"}, 

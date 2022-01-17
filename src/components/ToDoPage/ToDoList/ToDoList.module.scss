@@ -32,11 +32,17 @@
 .ListItemButtonWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px 20px;
   box-sizing: border-box;
   font-size: 14px;;
   color: #9799AE;
+}
+
+.ListItemButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .LightTheme {
@@ -48,4 +54,14 @@
 
 .ActiveLightTheme {
   color: #B763EF;
+}
+
+@media screen and (max-width: 767px) {
+  .ListItemButtonWrapper {
+    flex-direction: column;
+  }
+
+  .ListItemButton {
+    justify-content: space-between;
+  }
 }

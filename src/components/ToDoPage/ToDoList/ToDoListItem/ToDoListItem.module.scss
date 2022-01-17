@@ -8,6 +8,11 @@
   box-sizing: border-box;
   font-size: 14px;;
   color: #9799AE;
+  cursor: grab;
+}
+
+.ToDoListItem:active {
+  cursor: grabbing;
 }
 
 .ToDoListItem:last-child {

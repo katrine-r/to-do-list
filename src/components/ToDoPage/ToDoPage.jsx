@@ -1,12 +1,13 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+import React, { useMemo, useState, useEffect, useCallback, useContext } from "react";
 import classes from "./ToDoPage.module.scss";
 import Input from "../UI/Input/Input";
 import ToDoList from "./ToDoList/ToDoList";
 import { SVGiconsSelector } from "../UI/SVGiconsSelector/SVGiconsSelector";
 import classNames from "classnames";
 import update from "immutability-helper";
+import { ChangeThemeContext } from "../../context";
 
-const ToDoPage = ({changeTheme}) => {
+const ToDoPage = () => {
   const [myToDo, setMyToDo] = useState(
     () => {
         const saved = localStorage.getItem("myToDo");
@@ -18,6 +19,7 @@ const ToDoPage = ({changeTheme}) => {
   const [searchToDo, setSearchToDo] = useState("");
   const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
   const [isActive, setIsActive] = useState("all")
+  const {changeTheme} = useContext(ChangeThemeContext)
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -163,7 +165,6 @@ const ToDoPage = ({changeTheme}) => {
             value={searchToDo}
             placeholder="Search"
             onChange={(ev) => setSearchToDo(ev.target.value)}
-            changeTheme={changeTheme}
           />
         </div>
 
@@ -179,7 +180,6 @@ const ToDoPage = ({changeTheme}) => {
             value={textToDo}
             placeholder="Enter value"
             onChange={(ev) => setTextToDo(ev.target.value)}
-            changeTheme={changeTheme}
           />
         </form>
 
@@ -192,10 +192,8 @@ const ToDoPage = ({changeTheme}) => {
               isActive={isActive}
               sortedActiveCompleted={sortedActiveCompleted}
               sortedAlphabetical={sortedAlphabetical}
-              changeTheme={changeTheme}
               removeCompletedToDoHandler={removeCompletedToDoHandler}
               viewOrEditToDoHandler={viewOrEditToDoHandler}
-              setTextToDo={setTextToDo}
               editingToDoHandler={editingToDoHandler}
               finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
               moveCardToDo={moveCardToDo}

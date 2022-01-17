@@ -7,7 +7,7 @@ const Button = (props) => {
 
     return (
         <button className={classes.Button} {...restProps}>
-            {children}
+            { children }
         </button> 
     )
 }
