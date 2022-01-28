@@ -50,7 +50,7 @@
 
 .ItemText {
   text-align: left;
-  color: #9799AE;
+  color: var(--color-item-text);
 }
 
 .Button {
@@ -67,7 +67,7 @@
   width: 20px;
   height: 20px;
   margin: 2px 22px 2px 2px;
-  background: linear-gradient(45deg, #2D18A1 0%, #781C73 100%);
+  background: var(--bg-checked-to-do);
   border-radius: 50%;
 }
 
@@ -76,24 +76,6 @@
 }
 
 .CheckText {
-  color: #3F4156;
+  color: var(--color-checked-item-text);
   text-decoration: line-through;
-}
-
-.LightTheme {
-  text-align: left;
-  color: #3F4156;
-}
-
-.CheckTextLightTheme {
-  color: #9799AE;
-  text-decoration: line-through;
-}
-
-.CheckLightTheme {
-  width: 20px;
-  height: 20px;
-  margin: 2px 22px 2px 2px;
-  background: linear-gradient(45deg, #B763EF 0%, #73A5FC 100%);
-  border-radius: 50%;
 }

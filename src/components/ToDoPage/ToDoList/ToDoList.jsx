@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./ToDoList.module.scss";
 import ToDoListItem from "./ToDoListItem/ToDoListItem";
 import classNames from "classnames";
 import { SVGiconsSelector } from "../../UI/SVGiconsSelector/SVGiconsSelector";
 import Button from "../../UI/Button/Button";
-import { ChangeThemeContext } from "../../../context";
 
 const ToDoList = ({
   removeHandler, 
@@ -21,12 +20,8 @@ const ToDoList = ({
   moveCardToDo
 }) => {
 
-  const {changeTheme} = useContext(ChangeThemeContext)
-
   return (
-    <div className={classNames(classes.ToDoList, 
-      {[classes.LightTheme]: changeTheme === "light"})}
-    >
+    <div className={classes.ToDoList}>
       <ul>
         {filteredMyToDo.map((textItem, index) => {
           return (
@@ -66,23 +61,26 @@ const ToDoList = ({
 
           <div className={classes.ListItemButton}>
             <div>
-              <Button className={classNames(classes.Button, 
-                {[classes.Active]: isActive === "all" && changeTheme === "dark"},
-                {[classes.ActiveLightTheme]: isActive === "all" && changeTheme === "light"})} 
+              <Button
+                className={classNames(classes.Button, {
+                  [classes.Active]: isActive === "all"
+                })}
                 onClick={() => filteredActiveCompleted("all")}
               >
                 All
               </Button>
-              <Button className={classNames(classes.Button, 
-                {[classes.Active]: isActive === false && changeTheme === "dark"},
-                {[classes.ActiveLightTheme]: isActive === false && changeTheme === "light"})} 
+              <Button
+                className={classNames(classes.Button, {
+                  [classes.Active]: isActive === false
+                })}
                 onClick={() => filteredActiveCompleted(false)}
               >
                 Active
               </Button>
-              <Button className={classNames(classes.Button, 
-                {[classes.Active]: isActive === true && changeTheme === "dark"},
-                {[classes.ActiveLightTheme]: isActive === true && changeTheme === "light"})} 
+              <Button
+                className={classNames(classes.Button, {
+                  [classes.Active]: isActive === true
+                })}
                 onClick={() => filteredActiveCompleted(true)}
               >
                 Completed

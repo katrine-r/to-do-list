@@ -19,7 +19,7 @@
   width: 100%;
   border-radius: 3px;
   box-sizing: border-box;
-  background: #25273C;
+  background: var(--bg-to-do-list-wrapper);
 
   .IconWrapper {
     margin-right: 20px;
@@ -27,12 +27,7 @@
 }
 
 .EmptyToDo {
-  color: #fff;
-}
-
-.LightTheme {
-  color: #3F4156;
-  background: #fff;
+  color: var(--color-empty-to-do);
 }
 
 @media screen and (max-width: 767px) {

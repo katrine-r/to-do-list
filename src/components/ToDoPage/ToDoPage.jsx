@@ -1,11 +1,9 @@
-import React, { useMemo, useState, useEffect, useCallback, useContext } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import classes from "./ToDoPage.module.scss";
 import Input from "../UI/Input/Input";
 import ToDoList from "./ToDoList/ToDoList";
 import { SVGiconsSelector } from "../UI/SVGiconsSelector/SVGiconsSelector";
-import classNames from "classnames";
 import update from "immutability-helper";
-import { ChangeThemeContext } from "../../context";
 
 const ToDoPage = () => {
   const [myToDo, setMyToDo] = useState(
@@ -19,7 +17,6 @@ const ToDoPage = () => {
   const [searchToDo, setSearchToDo] = useState("");
   const [filteredMyToDo, setFilteredMyToDo] = useState(myToDo)
   const [isActive, setIsActive] = useState("all")
-  const {changeTheme} = useContext(ChangeThemeContext)
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -153,9 +150,7 @@ const ToDoPage = () => {
     <div className={classes.ToDoPage}>
       <div className={classes.ToDoWrapper}>
 
-        <div className={classNames(classes.SearchWrapper, 
-          {[classes.LightTheme]: changeTheme === "light"})}
-        >
+        <div className={classes.SearchWrapper}>
           <span className={classes.IconWrapper}>
             <SVGiconsSelector id="search" />
           </span>
@@ -168,9 +163,7 @@ const ToDoPage = () => {
           />
         </div>
 
-        <form onSubmit={handleSubmit} className={classNames(classes.FormWrapper, 
-          {[classes.LightTheme]: changeTheme === "light"})}
-        >
+        <form onSubmit={handleSubmit} className={classes.FormWrapper}>
           <span className={classes.IconWrapper}>
             <SVGiconsSelector id="keyboard" />
           </span>
@@ -198,9 +191,7 @@ const ToDoPage = () => {
               finishedEditingKeyEnterHandler={finishedEditingKeyEnterHandler}
               moveCardToDo={moveCardToDo}
             />
-          : <span className={classNames(classes.EmptyToDo, 
-              {[classes.LightTheme]: changeTheme === "light"})}
-            >
+          : <span className={classes.EmptyToDo}>
               To-do list is empty
             </span>
         }

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import classes from "./ToDoListItem.module.scss";
 import { SVGiconsSelector } from "../../../UI/SVGiconsSelector/SVGiconsSelector";
 import classNames from "classnames";
@@ -6,7 +6,6 @@ import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../../../../ItemTypes";
-import { ChangeThemeContext } from "../../../../context";
 
 const ToDoListItem = ({
   textToDo, 
@@ -21,8 +20,6 @@ const ToDoListItem = ({
   moveCardToDo,
   index
 }) => {
-
-  const {changeTheme} = useContext(ChangeThemeContext)
 
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
@@ -83,9 +80,8 @@ const ToDoListItem = ({
       data-handler-id={handlerId}
     >
       <div className={classes.ItemWrapper}>
-        <span className={classNames(classes.ItemIcon, 
-          {[classes.Check]: checked && changeTheme === "dark"},
-          {[classes.CheckLightTheme]: checked && changeTheme === "light"})}
+        <span
+          className={classNames(classes.ItemIcon, { [classes.Check]: checked })}
           onClick={() => checkToDoHandler(id)}
         >
           { checked 
@@ -102,11 +98,10 @@ const ToDoListItem = ({
                 onChange={(ev) => editingToDoHandler(ev, id)} 
                 onKeyPress={(ev) => finishedEditingKeyEnterHandler(ev, id)} 
               />
-            : <span className={classNames(
-                {[classes.CheckText]: checked && changeTheme === "dark"}, 
-                {[classes.ItemText]: changeTheme === "dark"}, 
-                {[classes.CheckTextLightTheme]: checked && changeTheme === "light"},
-                {[classes.LightTheme]: changeTheme === "light"})}
+            : <span
+                className={classNames(classes.ItemText, {
+                  [classes.CheckText]: checked
+                })}
               >
                 {textToDo}
               </span>

@@ -14,4 +14,27 @@ body {
 
 .App {
   text-align: center;
+  --bg-color: #181824;
+  --bg-linear-gradient-header: linear-gradient(45deg, #2d18a1 0%, #781c73 100%);
+  --bg-to-do-list-wrapper: #25273c;
+  --color-empty-to-do: #fff;
+  --border-to-do-list-wrapper: none;
+  --box-shadow-to-do-list-wrapper: none;
+  --color-button-filter-active: #3c5ea7;
+  --bg-checked-to-do: linear-gradient(45deg, #2d18a1 0%, #781c73 100%);
+  --color-item-text: #9799ae;
+  --color-checked-item-text: #3f4156;
+}
+
+.Light {
+  --bg-color: #fff;
+  --bg-linear-gradient-header: linear-gradient(45deg, #b763ef 0%, #73a5fc 100%);
+  --bg-to-do-list-wrapper: #fff;
+  --color-empty-to-do: #3f4156;
+  --border-to-do-list-wrapper: 1px solid #5b5d72;
+  --box-shadow-to-do-list-wrapper: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  --color-button-filter-active: #b763ef;
+  --bg-checked-to-do: linear-gradient(45deg, #b763ef 0%, #73a5fc 100%);
+  --color-item-text: #3f4156;
+  --color-checked-item-text: #9799ae;
 }
